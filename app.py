@@ -27,6 +27,11 @@ def terms():
     return flask.render_template("terms.html")
 
 
+@app.route("/privacy")
+def privacy():
+    return flask.render_template("privacy.html")
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #
