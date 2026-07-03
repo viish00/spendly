@@ -124,48 +124,51 @@ a { color: inherit; text-decoration: none; }
 /* ------------------------------------------------------------------ */
 
 .hero {
-    padding: 5rem 2rem 4rem;
+    background: #0b0b0b;
+    color: #f4f1ec;
+    padding: 6rem 2rem 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
     max-width: var(--max-width);
     margin: 0 auto;
+    border-radius: 0 0 24px 24px;
 }
 
 .hero-badge {
     display: inline-block;
-    background: var(--accent-light);
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    background: transparent;
+    color: #c9c4ba;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    margin-bottom: 1.5rem;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 1.75rem;
 }
 
 .hero-title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.1;
+    font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+    line-height: 1.05;
     letter-spacing: -0.02em;
-    color: var(--ink);
-    margin-bottom: 1.25rem;
+    color: #f7f4ee;
+    margin-bottom: 1.5rem;
 }
 
 .hero-title em {
     font-style: italic;
-    color: var(--accent);
+    color: #f7f4ee;
 }
 
 .hero-subtitle {
     font-size: 1.05rem;
-    color: var(--ink-muted);
+    color: #b8b3a8;
     line-height: 1.7;
     max-width: 460px;
-    margin-bottom: 2rem;
+    margin-bottom: 2.25rem;
 }
 
 .hero-actions {
@@ -184,13 +187,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .mock-card {
-    background: var(--paper-card);
-    border: 1px solid var(--border);
+    background: #141414;
+    border: 1px solid #2a2a2a;
     border-radius: var(--radius-lg);
     padding: 2rem;
     width: 100%;
     max-width: 380px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.45);
 }
 
 .mock-card-header {
@@ -199,13 +202,13 @@ a { color: inherit; text-decoration: none; }
     align-items: baseline;
     margin-bottom: 1.75rem;
     padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border-soft);
+    border-bottom: 1px solid #2a2a2a;
 }
 
 .mock-label {
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--ink-muted);
+    color: #8a857a;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
@@ -213,7 +216,7 @@ a { color: inherit; text-decoration: none; }
 .mock-total {
     font-family: var(--font-display);
     font-size: 1.75rem;
-    color: var(--ink);
+    color: #f7f4ee;
 }
 
 .mock-bars { display: flex; flex-direction: column; gap: 1rem; }
@@ -228,31 +231,31 @@ a { color: inherit; text-decoration: none; }
 .mock-cat {
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--ink-soft);
+    color: #c9c4ba;
 }
 
 .mock-bar-track {
     height: 6px;
-    background: var(--border-soft);
+    background: #232323;
     border-radius: 999px;
     overflow: hidden;
 }
 
 .mock-bar {
     height: 100%;
-    background: var(--accent);
+    background: #e85d4a;
     border-radius: 999px;
     transition: width 0.6s ease;
 }
 
-.mock-bar-2 { background: var(--accent-2); }
-.mock-bar-3 { background: #5b7fa6; }
-.mock-bar-4 { background: #8b5e83; }
+.mock-bar-2 { background: #d9a64a; }
+.mock-bar-3 { background: #6a8caf; }
+.mock-bar-4 { background: #a87a9e; }
 
 .mock-amt {
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--ink-muted);
+    color: #8a857a;
     text-align: right;
 }
 
@@ -293,6 +296,43 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost:hover {
     border-color: var(--ink);
     color: var(--ink);
+}
+
+/* Dark-hero button variants — scoped to the hero so the rest of the
+   page keeps its light theme. */
+
+.hero .btn-primary.btn-on-dark {
+    background: #f4f1ec;
+    color: #0b0b0b;
+}
+
+.hero .btn-primary.btn-on-dark:hover {
+    background: #ffffff;
+    color: #0b0b0b;
+}
+
+.hero .btn-ghost.btn-on-dark {
+    background: transparent;
+    color: #f4f1ec;
+    border: 1px solid #3a3a3a;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.hero .btn-ghost.btn-on-dark:hover {
+    border-color: #f4f1ec;
+    color: #ffffff;
+    background: transparent;
+}
+
+.hero .btn-arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.hero .btn-ghost.btn-on-dark:hover .btn-arrow {
+    transform: translateX(3px);
 }
 
 /* ------------------------------------------------------------------ */
