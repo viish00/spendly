@@ -2,6 +2,80 @@
 
 {% block title %}Spendly — Track Every Rupee{% endblock %}
 
+{% block head %}
+<style>
+    /* Demo video modal — scoped to landing page only. */
+    .demo-modal[hidden] { display: none; }
+
+    .demo-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .demo-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.78);
+        cursor: pointer;
+    }
+
+    .demo-modal__dialog {
+        position: relative;
+        width: min(900px, 92vw);
+        max-height: 92vh;
+    }
+
+    .demo-modal__close {
+        position: absolute;
+        top: -2.5rem;
+        right: -0.25rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        border: none;
+        background: transparent;
+        color: #f4f1ec;
+        font-size: 1.75rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .demo-modal__close:hover { color: #ffffff; }
+
+    .demo-modal__video {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: var(--radius-lg, 12px);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .demo-modal__video iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 
 <section class="hero">
@@ -19,6 +93,7 @@
         <div class="hero-actions">
             <a href="{{ url_for('register') }}" class="btn-primary btn-on-dark">Get started</a>
             <a href="{{ url_for('login') }}" class="btn-ghost btn-on-dark">Sign in <span class="btn-arrow">&rarr;</span></a>
+            <a href="#" class="btn-ghost btn-on-dark demo-modal__open" data-video-id="dQw4w9WgXcQ">See how it works</a>
         </div>
     </div>
     <div class="hero-visual">
@@ -89,4 +164,62 @@
     </div>
 </section>
 
+<div class="demo-modal" id="demo-modal" hidden>
+    <div class="demo-modal__backdrop" data-demo-close></div>
+    <div class="demo-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+        <button type="button" class="demo-modal__close" aria-label="Close video" data-demo-close>&times;</button>
+        <h2 id="demo-modal-title" class="sr-only">Product demo video</h2>
+        <div class="demo-modal__video">
+            <iframe id="demo-modal__iframe"
+                    title="Spendly product demo"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+    var modal    = document.getElementById('demo-modal');
+    var iframe   = document.getElementById('demo-modal__iframe');
+    var opener   = document.querySelector('.demo-modal__open');
+    if (!modal || !iframe || !opener) return;
+
+    var videoId  = opener.getAttribute('data-video-id') || '';
+    var baseSrc  = 'https://www.youtube.com/embed/' + encodeURIComponent(videoId)
+                 + '?autoplay=1&rel=0&modestbranding=1';
+
+    function open() {
+        iframe.src = baseSrc;
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        var closeBtn = modal.querySelector('.demo-modal__close');
+        if (closeBtn) closeBtn.focus();
+    }
+
+    function close() {
+        iframe.src = '';
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        opener.focus();
+    }
+
+    opener.addEventListener('click', function (e) {
+        e.preventDefault();
+        open();
+    });
+
+    modal.addEventListener('click', function (e) {
+        if (e.target.closest('[data-demo-close]')) close();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && !modal.hidden) close();
+    });
+})();
+</script>
 {% endblock %}
