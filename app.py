@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+import flask
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
 # ------------------------------------------------------------------ #
@@ -9,17 +9,17 @@ app = Flask(__name__)
 
 @app.route("/")
 def landing():
-    return render_template("landing.html")
+    return flask.render_template("landing.html")
 
 
 @app.route("/register")
 def register():
-    return render_template("register.html")
+    return flask.render_template("register.html")
 
 
 @app.route("/login")
 def login():
-    return render_template("login.html")
+    return flask.render_template("login.html")
 
 
 # ------------------------------------------------------------------ #
