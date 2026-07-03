@@ -22,6 +22,11 @@ def login():
     return flask.render_template("login.html")
 
 
+@app.route("/terms")
+def terms():
+    return flask.render_template("terms.html")
+
+
 # ------------------------------------------------------------------ #
 # Placeholder routes — students will implement these                  #
 # ------------------------------------------------------------------ #

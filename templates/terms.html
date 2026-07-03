@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Terms and Conditions — Spendly{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">Legal</div>
+        <h1 class="hero-title">
+            Terms and<br>
+            <em>Conditions</em>
+        </h1>
+        <p class="hero-subtitle">
+            Please read these terms carefully before using Spendly.
+            By creating an account or using the service, you agree
+            to the terms outlined below.
+        </p>
+    </div>
+</section>
+
+<section class="features">
+    <div class="features-inner">
+        <div class="feature-card">
+            <h3 class="feature-title">1. Acceptance of Terms</h3>
+            <p class="feature-body">
+                By accessing or using Spendly, you agree to be bound by these
+                Terms and Conditions. If you do not agree with any part of
+                these terms, you must not use the service. Spendly is a
+                personal finance tool intended for individual, non-commercial
+                use. You must be at least 13 years old to create an account.
+            </p>
+        </div>
+        <div class="feature-card">
+            <h3 class="feature-title">2. Use of Service</h3>
+            <p class="feature-body">
+                You agree to use Spendly only for lawful purposes and in
+                accordance with these terms. You are responsible for the
+                accuracy of the expenses and other financial information
+                you enter. Spendly is provided as a self-help tracking tool
+                and does not offer professional financial, tax, or investment
+                advice. Any decisions you make based on information shown
+                in the app are your own.
+            </p>
+        </div>
+        <div class="feature-card">
+            <h3 class="feature-title">3. User Data</h3>
+            <p class="feature-body">
+                You retain ownership of the expense data you add to Spendly.
+                We will only access your data to operate, maintain, and
+                improve the service, and will never sell it to third parties.
+                You are responsible for keeping your account credentials
+                secure. We may suspend or terminate accounts that show signs
+                of unauthorized access or abuse. You may delete your account
+                and associated data at any time.
+            </p>
+        </div>
+        <div class="feature-card">
+            <h3 class="feature-title">4. Limitations of Liability</h3>
+            <p class="feature-body">
+                Spendly is provided on an "as is" and "as available" basis.
+                To the fullest extent permitted by law, we disclaim all
+                warranties, express or implied. We are not liable for any
+                indirect, incidental, or consequential damages arising from
+                your use of the service, including but not limited to lost
+                profits, lost data, or financial losses resulting from
+                reliance on information shown in the app.
+            </p>
+        </div>
+        <div class="feature-card">
+            <h3 class="feature-title">5. Changes to Terms</h3>
+            <p class="feature-body">
+                We may update these terms from time to time to reflect
+                changes in the service or applicable law. When we do, we
+                will revise the "Last updated" date at the bottom of this
+                page. Continued use of Spendly after changes are posted
+                constitutes your acceptance of the revised terms. If you
+                do not agree to the updated terms, please stop using the
+                service.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-inner">
+        <h2 class="cta-title">Questions about these terms?</h2>
+        <p class="cta-body">Reach out and we'll be happy to clarify anything.</p>
+        <a href="{{ url_for('landing') }}" class="btn-primary">Back to home</a>
+    </div>
+</section>
+
+{% endblock %}
